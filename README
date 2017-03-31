@@ -1,0 +1,33 @@
+My simpsh program consists of seven files: main.c, files.c, files.h, command.c,
+command.h, sig.c, and sig.h.
+
+main.c contains the main function, which uses getopt_long to parse the options
+passed into the program.
+
+files.h and files.c contain the declarations and implementations of functions
+that allocate, reallocate, and free a dynamic array that stores file
+descriptors.  The file descriptors correspond to files and pipes that are
+opened with --rdonly, --wronly, --rdwr, or --pipe.  The array, its capacity,
+and its current index are declared as global variables in files.h.
+
+command.h and command.c contain the declaration and implementation of a
+function that executes the --command option.  command.h also contains the
+declarations of a struct that stores info about child processes, an array that
+stores these structs, the capacity of the array, and the current index of the
+array.  The struct stores a child process's PID and the argv array that holds
+arguments of --command.  This struct is needed when the --wait option is used
+because we obtain the child process's PID with the waitpid function, and then
+we must print the command arguments that are associated with that PID.
+
+sig.h and sig.c contain the declaration and implementation of the signal
+handler function that is called when the --catch option is used.
+
+My testing script is located in test.sh, which includes 15 test cases.  When
+running "make check", these test cases check the basic functionality of the
+options that I implemented for both Lab 1B and 1A.  I did not include test
+cases for Lab 1C in test.sh because my benchmarks for this portion of the lab
+are included in report.pdf.
+
+report.pdf contains my performance comparison of simpsh, bash, and dash for
+Lab 1C.  It includes my three benchmarks, a table that summarizes the
+performance data, and my conclusion about the data.
