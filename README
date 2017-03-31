@@ -1,5 +1,6 @@
 #simple-shell
 
-This is a Linux shell with bash-like functionality. To run a shell command, the user specifies the name of the command and the
-three file descriptors to be used as standard input, standard output, and standard error. This allows you to create a complex
-schedule of commands, unlike bash, where you can only run a linear schedule of commands.
+This is a Linux shell with bash-like functionality. To run a shell command, the user specifies the name of
+the command and the three file descriptors to be used as standard input, standard output, and standard
+error. This allows you to create a complex schedule of commands, unlike bash, where you can only run a
+linear schedule of commands.
